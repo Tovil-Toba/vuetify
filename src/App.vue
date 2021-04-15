@@ -1,32 +1,97 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          style="cursor: pointer"
+          contain
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          transition="scale-transition"
+          width="40"
+          @click="$router.push({ name: 'home' }).catch(err => {})"
+        />
+
+        <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 mr-3 hidden-sm-and-down"
+          style="cursor: pointer"
+          contain
+          min-width="100"
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
+          width="100"
+          @click="$router.push({ name: 'home' }).catch(err => {})"
+        />
+      </div>
+
+      <v-btn
+        icon
+        @click="$router.push({ name: 'map' }).catch(err => {})"
+      >
+        <v-icon>mdi-airplane</v-icon>
+      </v-btn>
+
+      <v-btn
+        icon
+        @click="$router.push({ name: 'currencies' })"
+      >
+        <v-icon>mdi-currency-usd</v-icon>
+      </v-btn>
+
+      <v-btn
+        icon
+        @click="$router.push({ name: 'about' })"
+      >
+        <v-icon>mdi-information</v-icon>
+      </v-btn>
+
+      <v-spacer />
+
+      <v-btn
+        icon
+        @click="toggleTheme"
+      >
+        <v-icon>{{ toggleThemeIcon }}</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import Vue from 'vue'
 
-#nav {
-  padding: 30px;
-}
+export default Vue.extend({
+  name: 'App',
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  components: {
+    //
+  },
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  data: () => ({
+    //
+  }),
+
+  computed: {
+    toggleThemeIcon: function () {
+      return this.$vuetify.theme.dark
+        ? 'mdi-weather-night' // moon-waxing-crescent
+        : 'mdi-white-balance-sunny'
+    }
+  },
+
+  methods: {
+    toggleTheme () {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+    }
+  }
+})
+</script>

@@ -1,5 +1,17 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="mx-3 mt-2 mb-3 about">
+    <h1>О приложении</h1>
+    Простое приложение для тестирования Vue в целом и Vuetify в частности.
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  name: 'About',
+  data: () => ({
+    dialog: false
+  })
+})
+</script>
