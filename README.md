@@ -1,5 +1,7 @@
 # my-app
 
+http://vuetify.johnwatson.ru/#/map
+
 ## Project setup
 ```
 npm install
